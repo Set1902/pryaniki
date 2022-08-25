@@ -10,7 +10,7 @@ import Combine
 
 
 // MARK: - Cart
-struct Cart: Decodable {
+struct Welcome: Decodable {
     var data: [Datum]?
     var view: [String]?
 }
