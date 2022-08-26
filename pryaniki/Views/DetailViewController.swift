@@ -9,6 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var selectedText: UILabel!
     
     @IBOutlet weak var textLabel: UILabel!
     
@@ -33,13 +34,21 @@ class DetailViewController: UIViewController {
         
         switch datum.name {
         case "hz":
-            textLabel.isHidden = false
+            selectedText.isHidden = true
             textLabel.text = datum.data?.text!
         case "picture":
-            textLabel.isHidden = false
             imageView.isHidden = false
+            selectedText.isHidden = true
             textLabel.text = datum.data?.text!
             getImage(with: (datum.data?.url!)!)
+        case "selector":
+            imageView.isHidden = true
+            selectedText.isHidden = false
+            let id: String = String((datum.data?.selectedID!)!)
+            textLabel.text = "Selected ID: \(id)"
+            let idd: Int = (datum.data?.selectedID)! - 1
+            let selectedTextt: String = String((datum.data?.variants![idd].text!)!)
+            selectedText.text = selectedTextt
         case .none:
             print("error")
         case .some(_):
@@ -61,6 +70,4 @@ class DetailViewController: UIViewController {
         }
         
     }
-    
-    
 }

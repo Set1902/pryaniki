@@ -72,6 +72,13 @@
                                 <rect key="frame" x="75" y="120" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PD-b6-zeC">
+                                <rect key="frame" x="16" y="120" width="358" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y8t-pL-OJw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,6 +92,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="air-zJ-siv" id="cvo-2j-v7U"/>
+                        <outlet property="selectedText" destination="4PD-b6-zeC" id="WEb-Zc-ixo"/>
                         <outlet property="textLabel" destination="NEv-RW-BLv" id="cK1-Js-jU2"/>
                     </connections>
                 </viewController>
