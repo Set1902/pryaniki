@@ -60,14 +60,36 @@
                     <view key="view" contentMode="scaleToFill" id="aVk-3V-cbo">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEv-RW-BLv">
+                                <rect key="frame" x="16" y="91" width="358" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="air-zJ-siv">
+                                <rect key="frame" x="75" y="120" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Y8t-pL-OJw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="sk8-xz-ud1">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="mKl-Bd-sa6"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="mKl-Bd-sa6">
+                            <connections>
+                                <segue destination="VPU-ig-vsb" kind="unwind" unwindAction="unwindToMainWithUnwindSegue:" id="mXX-pt-Q74"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="air-zJ-siv" id="cvo-2j-v7U"/>
+                        <outlet property="textLabel" destination="NEv-RW-BLv" id="cK1-Js-jU2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKL-3n-rOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="VPU-ig-vsb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2906.1538461538462" y="6.3981042654028437"/>
         </scene>

@@ -36,12 +36,9 @@ class MainViewController: UIViewController {
           .sink { [weak self] event in
           switch event {
           case .fetchPryanikiDidSucceed(let model):
-              print(model)
               self?.updateUI(with: model)
-              //self?.label.text = String(news.totalCount!)
           case .fetchPryanikiDidFail(let error):
               print(error)
-              //self?.errorr(with: error)
           }
         }.store(in: &cancellables)
         
@@ -55,9 +52,15 @@ class MainViewController: UIViewController {
         self.vieww = model.view
         self.tableView.reloadData()
     }
-    
 
 }
+
+extension MainViewController {
+    @IBAction func unwindToMain(unwindSegue: UIStoryboardSegue) {
+        
+    }
+}
+
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,7 +90,15 @@ extension MainViewController {
         
        let datumViewController = navController.topViewController as! DetailViewController
         guard let newIndexPath = tableView.indexPathForSelectedRow else {return}
-        let selecteddatum: Datum = model.data![newIndexPath.row]
-        datumViewController.datum = selecteddatum
+
+        let searchValue = model.view![newIndexPath.row]
+        
+        for i in 0..<model.data!.count {
+            if model.data![i].name == searchValue {
+                let selecteddatum: Datum = model.data![i]
+                datumViewController.datum = selecteddatum
+            }
+            
+        }
     }
 }
