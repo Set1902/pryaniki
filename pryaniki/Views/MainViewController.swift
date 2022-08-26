@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var model = Welcome()
+    private var vieww: [String]?
     private let vm = MainViewModel()
     private let input: PassthroughSubject<MainViewModel.Input, Never> = .init()
     private var cancellables = Set<AnyCancellable>()
@@ -51,6 +52,7 @@ class MainViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.model = model
+        self.vieww = model.view
         self.tableView.reloadData()
     }
     
@@ -59,7 +61,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.data!.count
+        return model.view!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,9 +73,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func comfigureCell(_ cell: UITableViewCell, forCategoryAt indexPath: IndexPath) {
-        let model = model.data![indexPath.row]
-        cell.textLabel?.text = model.name!
+        let model = model.view![indexPath.row]
+        cell.textLabel?.text = model
     }
-    
-    
+}
+
+
+extension MainViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "Show" else {return}
+        
+        let navController = segue.destination as! UINavigationController
+        
+       let datumViewController = navController.topViewController as! DetailViewController
+        guard let newIndexPath = tableView.indexPathForSelectedRow else {return}
+        let selecteddatum: Datum = model.data![newIndexPath.row]
+        datumViewController.datum = selecteddatum
+    }
 }
